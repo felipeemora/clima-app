@@ -38,7 +38,7 @@ export const useWeather = () => {
     setLoading(true);
 
     try {
-      const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searh.city},${searh.city}&appid=${apiKey}`;
+      const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searh.city},${searh.city}&appid=${apiKey}`;
       const { data } = await axios(geoUrl);
 
       if (!data[0]) {
@@ -48,7 +48,7 @@ export const useWeather = () => {
 
       const lat = data[0].lat;
       const lon = data[0].lon;
-      
+
       const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
       
       const { data: weatherResult } = await axios(weatherUrl);
